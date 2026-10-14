@@ -1,7 +1,7 @@
 /* ==========================================================================
    Kerala Wedding Invitation - Watercolor Elegance Design System
    Matches reference: Vyshnav & Pooja Wedding Invitation
-   Includes Premium Scroll-Triggered & Staggered Animations
+   Directional & Premium Scroll-Triggered Entrance Animations
    ========================================================================== */
 
 :root {
@@ -28,9 +28,9 @@
   --font-signature: 'Alex Brush', cursive;
   --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Transitions */
+  /* Transitions & Romantic Cinematic Easing */
   --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-romantic: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Base Reset & Smooth Scrolling */
@@ -67,53 +67,72 @@ body {
 }
 
 /* ==========================================================================
-   Scroll-Triggered Animation Engine (GPU-Accelerated)
+   Directional Scroll-Triggered Entrance Engine (GPU-Accelerated)
+   Fallback: By default, everything is visible. When JS runs, .js-reveal-active
+   activates the initial offset and triggers the entrance animations.
    ========================================================================== */
-.scroll-reveal {
+.js-reveal-active .reveal-from-left,
+.js-reveal-active .reveal-from-right,
+.js-reveal-active .reveal-from-bottom,
+.js-reveal-active .reveal-fade,
+.js-reveal-active .reveal-scale-in {
   opacity: 0;
-  transform: translate3d(0, 24px, 0);
-  transition: opacity 0.85s var(--ease-out-expo),
-              transform 0.85s var(--ease-out-expo);
+  transition: opacity 0.85s var(--ease-romantic),
+              transform 0.85s var(--ease-romantic);
   will-change: opacity, transform;
 }
 
-.scroll-reveal.is-revealed {
-  opacity: 1;
+/* 1. From Left (Couple photographs, left florals, content blocks) */
+.js-reveal-active .reveal-from-left {
+  transform: translate3d(-38px, 0, 0);
+}
+
+/* 2. From Right (Wedding details, text blocks, right complementary images) */
+.js-reveal-active .reveal-from-right {
+  transform: translate3d(38px, 0, 0);
+}
+
+/* 3. From Bottom (Section headings, wedding date, venue, countdown blocks) */
+.js-reveal-active .reveal-from-bottom {
+  transform: translate3d(0, 34px, 0);
+}
+
+/* 4. Fade-in (Auspicious emblems, supporting text, divider lines) */
+.js-reveal-active .reveal-fade {
   transform: translate3d(0, 0, 0);
 }
 
-/* Animation Variations */
-.scroll-reveal.reveal-fade {
-  transform: none;
+/* 5. Scale-in (Gentle scale from 96% to 100%) */
+.js-reveal-active .reveal-scale-in {
+  transform: scale(0.96) translate3d(0, 14px, 0);
 }
 
-.scroll-reveal.reveal-slide-right {
-  transform: translate3d(-26px, 0, 0);
+/* Combined Directional Scale-ins */
+.js-reveal-active .reveal-from-left.reveal-scale-in {
+  transform: scale(0.96) translate3d(-32px, 0, 0);
 }
 
-.scroll-reveal.reveal-slide-left {
-  transform: translate3d(26px, 0, 0);
+.js-reveal-active .reveal-from-right.reveal-scale-in {
+  transform: scale(0.96) translate3d(32px, 0, 0);
 }
 
-.scroll-reveal.reveal-slide-down {
-  transform: translate3d(0, -22px, 0);
+.js-reveal-active .reveal-from-bottom.reveal-scale-in {
+  transform: scale(0.96) translate3d(0, 24px, 0);
 }
 
-.scroll-reveal.reveal-scale {
-  transform: scale(0.95);
+/* Triggered State: Natural Smooth Settlement */
+.is-revealed {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
 }
 
-.scroll-reveal.reveal-scale.is-revealed {
-  transform: scale(1);
-}
-
-/* Stagger Delays */
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-.delay-5 { transition-delay: 0.5s; }
-.delay-6 { transition-delay: 0.6s; }
+/* Subtle Stagger Delays */
+.delay-1 { transition-delay: 80ms; }
+.delay-2 { transition-delay: 160ms; }
+.delay-3 { transition-delay: 240ms; }
+.delay-4 { transition-delay: 320ms; }
+.delay-5 { transition-delay: 400ms; }
+.delay-6 { transition-delay: 480ms; }
 
 /* Subtle Parallax Decorative Elements */
 .parallax-decor {
@@ -1593,6 +1612,31 @@ body {
     display: none !important;
   }
 
+  /* Mobile directional entrance offsets (reduced to 20px to prevent horizontal overflow) */
+  .js-reveal-active .reveal-from-left {
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  .js-reveal-active .reveal-from-right {
+    transform: translate3d(20px, 0, 0);
+  }
+
+  .js-reveal-active .reveal-from-bottom {
+    transform: translate3d(0, 20px, 0);
+  }
+
+  .js-reveal-active .reveal-from-left.reveal-scale-in {
+    transform: scale(0.96) translate3d(-16px, 0, 0);
+  }
+
+  .js-reveal-active .reveal-from-right.reveal-scale-in {
+    transform: scale(0.96) translate3d(16px, 0, 0);
+  }
+
+  .js-reveal-active .reveal-from-bottom.reveal-scale-in {
+    transform: scale(0.96) translate3d(0, 16px, 0);
+  }
+
   /* Hero Section Mobile */
   .hero-section {
     min-height: auto;
@@ -1808,11 +1852,16 @@ body {
     scroll-behavior: auto;
   }
 
-  .scroll-reveal,
-  .scroll-reveal.reveal-slide-right,
-  .scroll-reveal.reveal-slide-left,
-  .scroll-reveal.reveal-slide-down,
-  .scroll-reveal.reveal-scale {
+  .reveal-from-left,
+  .reveal-from-right,
+  .reveal-from-bottom,
+  .reveal-fade,
+  .reveal-scale-in,
+  .js-reveal-active .reveal-from-left,
+  .js-reveal-active .reveal-from-right,
+  .js-reveal-active .reveal-from-bottom,
+  .js-reveal-active .reveal-fade,
+  .js-reveal-active .reveal-scale-in {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
