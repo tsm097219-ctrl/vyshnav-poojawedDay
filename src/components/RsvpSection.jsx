@@ -12,7 +12,7 @@ export const RsvpSection = () => {
   return (
     <section id="rsvp" className="rsvp-section" aria-label="Wedding RSVP">
       {/* Decorative Left: Brass Uruli with flowers sliding in from Left */}
-      <div className="rsvp-decor-left reveal-from-left delay-1 parallax-decor" data-parallax-speed="0.02" aria-hidden="true">
+      <div className="rsvp-decor-left reveal-from-left delay-1" aria-hidden="true">
         <img
           src="/assets/rsvp_uruli_feathered.png"
           alt="Traditional Kerala Brass Uruli with Flowers"
@@ -21,7 +21,7 @@ export const RsvpSection = () => {
       </div>
 
       {/* Decorative Right: Kolam pattern and banana leaves sliding in from Right */}
-      <div className="rsvp-decor-right reveal-from-right delay-1 parallax-decor" data-parallax-speed="0.02" aria-hidden="true">
+      <div className="rsvp-decor-right reveal-from-right delay-1" aria-hidden="true">
         <div className="rsvp-kolam-wrap">
           <KolamPattern size={90} color="#b38753" opacity={0.65} />
         </div>

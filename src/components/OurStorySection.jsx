@@ -8,7 +8,7 @@ export const OurStorySection = () => {
   return (
     <section id="story" className="story-section" aria-label="Our Story">
       {/* Decorative leaf accent on the right entering from right */}
-      <div className="story-decor-right reveal-from-right delay-2 parallax-decor" data-parallax-speed="0.03" aria-hidden="true">
+      <div className="story-decor-right reveal-from-right delay-2" aria-hidden="true">
         <img
           src="/assets/our_story_leaf.png"
           alt="Kerala Banana Leaves Accent"

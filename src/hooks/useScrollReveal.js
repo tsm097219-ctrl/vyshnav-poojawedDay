@@ -34,8 +34,8 @@ export const useScrollReveal = () => {
 
     const observerOptions = {
       root: null,
-      rootMargin: '0px 0px -40px 0px', // Triggers slightly before element reaches bottom of viewport
-      threshold: 0.1,
+      rootMargin: '0px 0px 50px 0px', // Triggers ahead of viewport edge so entrance is seamless
+      threshold: 0.05,
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
@@ -46,29 +46,8 @@ export const useScrollReveal = () => {
 
     revealElements.forEach((el) => observer.observe(el));
 
-    // Handle subtle scroll-linked parallax for floral decorative accents
-    let ticking = false;
-    const handleScrollParallax = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          // Apply gentle, restrained parallax offset to marked elements
-          const parallaxEls = document.querySelectorAll('.parallax-decor');
-          parallaxEls.forEach((el) => {
-            const speed = parseFloat(el.getAttribute('data-parallax-speed') || '0.04');
-            el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
-          });
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScrollParallax, { passive: true });
-
     return () => {
       observer.disconnect();
-      window.removeEventListener('scroll', handleScrollParallax);
     };
   }, []);
 };

@@ -19,7 +19,7 @@ export const HeroSection = () => {
       {/* Decorative Illustrations Framing Content (Desktop) */}
       <div className="hero-decor-container" aria-hidden="true">
         {/* Left: Banana leaves, hanging jasmine garlands, and brass Nilavilakku sliding in from Left */}
-        <div className="decor-left reveal-from-left delay-1 parallax-decor" data-parallax-speed="0.02">
+        <div className="decor-left reveal-from-left delay-1">
           <img
             src="/assets/hero_left_feathered.png"
             alt="Traditional Kerala Nilavilakku and Banana Leaves"

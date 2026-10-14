@@ -9,7 +9,7 @@ export const WeddingDetailsSection = () => {
   return (
     <section id="details" className="details-section" aria-label="Wedding Details and Venue">
       {/* Decorative Kerala Temple Gopuram Illustration on Right sliding from Right */}
-      <div className="details-decor-right reveal-from-right delay-2 parallax-decor" data-parallax-speed="0.03" aria-hidden="true">
+      <div className="details-decor-right reveal-from-right delay-2" aria-hidden="true">
         <img
           src="/assets/details_temple_feathered.png"
           alt="Traditional Kerala Temple Architecture"

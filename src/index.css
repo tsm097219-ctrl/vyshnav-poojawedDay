@@ -41,10 +41,11 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-snap-type: none !important;
 }
 
 body {
@@ -55,6 +56,17 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+  scroll-snap-type: none !important;
+}
+
+/* Explicitly disable scroll snapping on containers and sections */
+.wedding-canvas-wrapper,
+main,
+section,
+div {
+  scroll-snap-type: none;
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
 }
 
 /* Visibility Utilities */
@@ -69,7 +81,7 @@ body {
 /* ==========================================================================
    Directional Scroll-Triggered Entrance Engine (GPU-Accelerated)
    Fallback: By default, everything is visible. When JS runs, .js-reveal-active
-   activates the initial offset and triggers the entrance animations.
+   activates subtle initial offsets and triggers gentle entrance animations.
    ========================================================================== */
 .js-reveal-active .reveal-from-left,
 .js-reveal-active .reveal-from-right,
@@ -77,24 +89,24 @@ body {
 .js-reveal-active .reveal-fade,
 .js-reveal-active .reveal-scale-in {
   opacity: 0;
-  transition: opacity 0.85s var(--ease-romantic),
-              transform 0.85s var(--ease-romantic);
+  transition: opacity 0.65s var(--ease-romantic),
+              transform 0.65s var(--ease-romantic);
   will-change: opacity, transform;
 }
 
 /* 1. From Left (Couple photographs, left florals, content blocks) */
 .js-reveal-active .reveal-from-left {
-  transform: translate3d(-38px, 0, 0);
+  transform: translate3d(-18px, 0, 0);
 }
 
 /* 2. From Right (Wedding details, text blocks, right complementary images) */
 .js-reveal-active .reveal-from-right {
-  transform: translate3d(38px, 0, 0);
+  transform: translate3d(18px, 0, 0);
 }
 
 /* 3. From Bottom (Section headings, wedding date, venue, countdown blocks) */
 .js-reveal-active .reveal-from-bottom {
-  transform: translate3d(0, 34px, 0);
+  transform: translate3d(0, 16px, 0);
 }
 
 /* 4. Fade-in (Auspicious emblems, supporting text, divider lines) */
@@ -102,22 +114,22 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-/* 5. Scale-in (Gentle scale from 96% to 100%) */
+/* 5. Scale-in (Gentle scale from 97% to 100%) */
 .js-reveal-active .reveal-scale-in {
-  transform: scale(0.96) translate3d(0, 14px, 0);
+  transform: scale(0.97) translate3d(0, 10px, 0);
 }
 
 /* Combined Directional Scale-ins */
 .js-reveal-active .reveal-from-left.reveal-scale-in {
-  transform: scale(0.96) translate3d(-32px, 0, 0);
+  transform: scale(0.97) translate3d(-16px, 0, 0);
 }
 
 .js-reveal-active .reveal-from-right.reveal-scale-in {
-  transform: scale(0.96) translate3d(32px, 0, 0);
+  transform: scale(0.97) translate3d(16px, 0, 0);
 }
 
 .js-reveal-active .reveal-from-bottom.reveal-scale-in {
-  transform: scale(0.96) translate3d(0, 24px, 0);
+  transform: scale(0.97) translate3d(0, 12px, 0);
 }
 
 /* Triggered State: Natural Smooth Settlement */
@@ -127,17 +139,16 @@ body {
 }
 
 /* Subtle Stagger Delays */
-.delay-1 { transition-delay: 80ms; }
-.delay-2 { transition-delay: 160ms; }
-.delay-3 { transition-delay: 240ms; }
-.delay-4 { transition-delay: 320ms; }
-.delay-5 { transition-delay: 400ms; }
-.delay-6 { transition-delay: 480ms; }
+.delay-1 { transition-delay: 60ms; }
+.delay-2 { transition-delay: 120ms; }
+.delay-3 { transition-delay: 180ms; }
+.delay-4 { transition-delay: 240ms; }
+.delay-5 { transition-delay: 300ms; }
+.delay-6 { transition-delay: 360ms; }
 
-/* Subtle Parallax Decorative Elements */
+/* Decorative Elements Static Flow */
 .parallax-decor {
-  transition: transform 0.15s cubic-bezier(0, 0, 0.2, 1);
-  will-change: transform;
+  /* Retained in standard document flow to prevent scroll interference */
 }
 
 /* Hanging Lamps Sway Animation */
@@ -419,7 +430,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: clip;
 }
 
 /* Hero Decorative Illustrations Layer */
@@ -1139,7 +1150,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .rsvp-decor-left {
@@ -1612,29 +1623,29 @@ body {
     display: none !important;
   }
 
-  /* Mobile directional entrance offsets (reduced to 20px to prevent horizontal overflow) */
+  /* Mobile directional entrance offsets (subtle to ensure natural, seamless scrolling) */
   .js-reveal-active .reveal-from-left {
-    transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-12px, 0, 0);
   }
 
   .js-reveal-active .reveal-from-right {
-    transform: translate3d(20px, 0, 0);
+    transform: translate3d(12px, 0, 0);
   }
 
   .js-reveal-active .reveal-from-bottom {
-    transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 10px, 0);
   }
 
   .js-reveal-active .reveal-from-left.reveal-scale-in {
-    transform: scale(0.96) translate3d(-16px, 0, 0);
+    transform: scale(0.98) translate3d(-10px, 0, 0);
   }
 
   .js-reveal-active .reveal-from-right.reveal-scale-in {
-    transform: scale(0.96) translate3d(16px, 0, 0);
+    transform: scale(0.98) translate3d(10px, 0, 0);
   }
 
   .js-reveal-active .reveal-from-bottom.reveal-scale-in {
-    transform: scale(0.96) translate3d(0, 16px, 0);
+    transform: scale(0.98) translate3d(0, 8px, 0);
   }
 
   /* Hero Section Mobile */
