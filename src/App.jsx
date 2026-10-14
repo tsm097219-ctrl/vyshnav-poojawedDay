@@ -1,4 +1,5 @@
 import React from 'react';
+import { useScrollReveal } from './hooks/useScrollReveal';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { CountdownSection } from './components/CountdownSection';
@@ -9,6 +10,9 @@ import { RsvpSection } from './components/RsvpSection';
 import { Footer } from './components/Footer';
 
 function App() {
+  // Activate performant scroll-triggered animations and subtle parallax
+  useScrollReveal();
+
   return (
     <div className="wedding-canvas-wrapper">
       {/* 1. Top Navigation */}

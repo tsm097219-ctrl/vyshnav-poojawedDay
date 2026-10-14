@@ -10,9 +10,9 @@ export const RsvpSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section id="rsvp" className="rsvp-section" aria-label="Wedding RSVP">
+    <section id="rsvp" className="rsvp-section scroll-reveal" aria-label="Wedding RSVP">
       {/* Decorative Left: Brass Uruli with pink/white flowers and lamp */}
-      <div className="rsvp-decor-left" aria-hidden="true">
+      <div className="rsvp-decor-left scroll-reveal reveal-slide-right delay-1 parallax-decor" data-parallax-speed="0.02" aria-hidden="true">
         <img
           src="/assets/rsvp_uruli_feathered.png"
           alt="Traditional Kerala Brass Uruli with Flowers"
@@ -21,7 +21,7 @@ export const RsvpSection = () => {
       </div>
 
       {/* Decorative Right: Kolam pattern and banana leaves with jasmine garland */}
-      <div className="rsvp-decor-right" aria-hidden="true">
+      <div className="rsvp-decor-right scroll-reveal reveal-slide-left delay-1 parallax-decor" data-parallax-speed="0.02" aria-hidden="true">
         <div className="rsvp-kolam-wrap">
           <KolamPattern size={90} color="#b38753" opacity={0.65} />
         </div>
@@ -34,16 +34,16 @@ export const RsvpSection = () => {
 
       <div className="rsvp-container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header scroll-reveal delay-1">
           <h2 className="section-eyebrow">{rsvp.heading}</h2>
           <LotusDivider color="#946234" width={140} />
         </div>
 
         {/* Subtitle Invitation Line */}
-        <p className="rsvp-subtext">{rsvp.subheading}</p>
+        <p className="rsvp-subtext scroll-reveal delay-2">{rsvp.subheading}</p>
 
         {/* Olive Green Pill Button: "Let Us Know ->" */}
-        <div className="rsvp-btn-wrapper">
+        <div className="rsvp-btn-wrapper scroll-reveal reveal-scale delay-3">
           <button
             onClick={() => setIsModalOpen(true)}
             className="rsvp-olive-btn"

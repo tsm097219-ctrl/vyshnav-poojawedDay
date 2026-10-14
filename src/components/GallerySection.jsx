@@ -27,10 +27,10 @@ export const GallerySection = () => {
   };
 
   return (
-    <section id="gallery" className="gallery-section" aria-label="Our Gallery">
+    <section id="gallery" className="gallery-section scroll-reveal" aria-label="Our Gallery">
       <div className="gallery-container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header scroll-reveal delay-1">
           <h2 className="section-eyebrow">OUR GALLERY</h2>
           <LotusDivider color="#946234" width={140} />
         </div>
@@ -40,18 +40,20 @@ export const GallerySection = () => {
           {/* Left Arrow Button */}
           <button
             onClick={handlePrev}
-            className="gallery-nav-arrow arrow-left"
+            className="gallery-nav-arrow arrow-left scroll-reveal delay-2"
             aria-label="Previous gallery image"
           >
             <ChevronLeft size={20} />
           </button>
 
-          {/* Cards Grid / Row */}
+          {/* Cards Grid with Staggered Visual Wave */}
           <div className="gallery-cards-row">
             {gallery.map((photo, index) => (
               <div
                 key={photo.id}
-                className={`gallery-card-item ${index === currentIndex ? 'is-active-focus' : ''}`}
+                className={`gallery-card-item scroll-reveal delay-${index + 1} ${
+                  index === currentIndex ? 'is-active-focus' : ''
+                }`}
                 onClick={() => setActivePhoto(photo)}
                 role="button"
                 tabIndex={0}
@@ -80,7 +82,7 @@ export const GallerySection = () => {
           {/* Right Arrow Button */}
           <button
             onClick={handleNext}
-            className="gallery-nav-arrow arrow-right"
+            className="gallery-nav-arrow arrow-right scroll-reveal delay-2"
             aria-label="Next gallery image"
           >
             <ChevronRight size={20} />
@@ -88,7 +90,7 @@ export const GallerySection = () => {
         </div>
 
         {/* Pagination Indicator Dots */}
-        <div className="gallery-dots-row" role="tablist" aria-label="Gallery pagination">
+        <div className="gallery-dots-row scroll-reveal delay-3" role="tablist" aria-label="Gallery pagination">
           {gallery.map((photo, idx) => (
             <button
               key={photo.id}

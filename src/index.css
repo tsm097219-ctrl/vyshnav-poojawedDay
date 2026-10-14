@@ -1,6 +1,7 @@
 /* ==========================================================================
    Kerala Wedding Invitation - Watercolor Elegance Design System
    Matches reference: Vyshnav & Pooja Wedding Invitation
+   Includes Premium Scroll-Triggered & Staggered Animations
    ========================================================================== */
 
 :root {
@@ -29,6 +30,7 @@
   
   /* Transitions */
   --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Base Reset & Smooth Scrolling */
@@ -64,7 +66,116 @@ body {
   display: block;
 }
 
-/* Background Watercolor Canvas Wrapper (Centered Portrait Invitation Card) */
+/* ==========================================================================
+   Scroll-Triggered Animation Engine (GPU-Accelerated)
+   ========================================================================== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 0.85s var(--ease-out-expo),
+              transform 0.85s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Animation Variations */
+.scroll-reveal.reveal-fade {
+  transform: none;
+}
+
+.scroll-reveal.reveal-slide-right {
+  transform: translate3d(-26px, 0, 0);
+}
+
+.scroll-reveal.reveal-slide-left {
+  transform: translate3d(26px, 0, 0);
+}
+
+.scroll-reveal.reveal-slide-down {
+  transform: translate3d(0, -22px, 0);
+}
+
+.scroll-reveal.reveal-scale {
+  transform: scale(0.95);
+}
+
+.scroll-reveal.reveal-scale.is-revealed {
+  transform: scale(1);
+}
+
+/* Stagger Delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* Subtle Parallax Decorative Elements */
+.parallax-decor {
+  transition: transform 0.15s cubic-bezier(0, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Hanging Lamps Sway Animation */
+@keyframes gentleLampSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1.2deg);
+  }
+}
+
+.decor-lamp-sway {
+  transform-origin: top center;
+  animation: gentleLampSway 6.5s infinite ease-in-out;
+}
+
+/* Oil Lamp Flame Subtle Glow */
+@keyframes flameGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(255, 180, 70, 0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(255, 200, 90, 0.55));
+  }
+}
+
+.decor-flame-glow {
+  animation: flameGlow 4s infinite ease-in-out;
+}
+
+/* Footer Heartbeat Pulse */
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.18);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.12);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.heartbeat-pulse {
+  animation: heartPulse 3.5s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   Background Watercolor Canvas Wrapper
+   ========================================================================== */
 .wedding-canvas-wrapper {
   position: relative;
   width: 100%;
@@ -755,6 +866,11 @@ body {
   border-radius: 8px;
   padding: 1.8rem 1.5rem;
   border: 1px solid rgba(142, 98, 56, 0.18);
+  transition: box-shadow 0.3s ease;
+}
+
+.details-grid:hover {
+  box-shadow: 0 10px 25px rgba(88, 50, 15, 0.08);
 }
 
 .detail-column {
@@ -781,6 +897,11 @@ body {
   justify-content: center;
   color: var(--color-gold-accent);
   margin-bottom: 0.6rem;
+  transition: transform 0.3s ease;
+}
+
+.detail-column:hover .detail-icon-wrap {
+  transform: translateY(-2px);
 }
 
 .detail-label {
@@ -837,7 +958,7 @@ body {
   color: #fff;
   border-color: var(--color-olive-btn);
   box-shadow: 0 4px 12px rgba(98, 102, 69, 0.25);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 /* ==========================================================================
@@ -873,11 +994,11 @@ body {
 .gallery-card-item {
   cursor: pointer;
   outline: none;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s ease;
 }
 
 .gallery-card-item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
 .deckled-border-wrap {
@@ -887,6 +1008,11 @@ body {
   aspect-ratio: 1 / 1.05;
   box-shadow: 0 6px 18px rgba(80, 45, 10, 0.12);
   border: 2px solid rgba(255, 255, 255, 0.75);
+  transition: box-shadow 0.35s ease;
+}
+
+.gallery-card-item:hover .deckled-border-wrap {
+  box-shadow: 0 10px 25px rgba(80, 45, 10, 0.2);
 }
 
 .gallery-thumbnail-img {
@@ -1682,9 +1808,24 @@ body {
     scroll-behavior: auto;
   }
 
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  .scroll-reveal,
+  .scroll-reveal.reveal-slide-right,
+  .scroll-reveal.reveal-slide-left,
+  .scroll-reveal.reveal-slide-down,
+  .scroll-reveal.reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .decor-lamp-sway,
+  .decor-flame-glow,
+  .heartbeat-pulse,
+  .scroll-arrow,
+  .audio-autoplay-hint,
+  .parallax-decor {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
   }
 }

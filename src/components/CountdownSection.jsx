@@ -44,10 +44,10 @@ export const CountdownSection = () => {
   }, []);
 
   return (
-    <section id="big-day" className="countdown-section" aria-label="Wedding Countdown">
+    <section id="big-day" className="countdown-section scroll-reveal" aria-label="Wedding Countdown">
       <div className="countdown-container">
         {/* Section Heading */}
-        <div className="countdown-header">
+        <div className="countdown-header scroll-reveal delay-1">
           <h2 className="countdown-title">THE BIG DAY</h2>
           <LotusDivider color="#6e6648" width={140} />
         </div>
@@ -55,38 +55,38 @@ export const CountdownSection = () => {
         {/* Counter Content with Vector Kolams */}
         <div className="countdown-body">
           {/* Left Kolam Pattern */}
-          <div className="kolam-flank kolam-left" aria-hidden="true">
+          <div className="kolam-flank kolam-left scroll-reveal reveal-slide-right delay-2" aria-hidden="true">
             <KolamPattern size={85} color="#63593a" opacity={0.7} />
           </div>
 
-          {/* Countdown Numbers Grid */}
+          {/* Countdown Numbers Grid with Staggered Entrance */}
           <div className="countdown-grid" role="timer" aria-live="polite">
-            <div className="time-block">
+            <div className="time-block scroll-reveal delay-2">
               <span className="time-number">{timeLeft.days}</span>
               <span className="time-unit">DAYS</span>
             </div>
 
-            <div className="time-divider" aria-hidden="true">|</div>
+            <div className="time-divider scroll-reveal delay-2" aria-hidden="true">|</div>
 
-            <div className="time-block">
+            <div className="time-block scroll-reveal delay-3">
               <span className="time-number">
                 {String(timeLeft.hours).padStart(2, '0')}
               </span>
               <span className="time-unit">HOURS</span>
             </div>
 
-            <div className="time-divider" aria-hidden="true">|</div>
+            <div className="time-divider scroll-reveal delay-3" aria-hidden="true">|</div>
 
-            <div className="time-block">
+            <div className="time-block scroll-reveal delay-4">
               <span className="time-number">
                 {String(timeLeft.minutes).padStart(2, '0')}
               </span>
               <span className="time-unit">MINUTES</span>
             </div>
 
-            <div className="time-divider" aria-hidden="true">|</div>
+            <div className="time-divider scroll-reveal delay-4" aria-hidden="true">|</div>
 
-            <div className="time-block">
+            <div className="time-block scroll-reveal delay-5">
               <span className="time-number">
                 {String(timeLeft.seconds).padStart(2, '0')}
               </span>
@@ -95,7 +95,7 @@ export const CountdownSection = () => {
           </div>
 
           {/* Right Kolam Pattern */}
-          <div className="kolam-flank kolam-right" aria-hidden="true">
+          <div className="kolam-flank kolam-right scroll-reveal reveal-slide-left delay-2" aria-hidden="true">
             <KolamPattern size={85} color="#63593a" opacity={0.7} />
           </div>
         </div>

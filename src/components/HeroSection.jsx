@@ -18,31 +18,31 @@ export const HeroSection = () => {
     <section id="home" className="hero-section" aria-label="Wedding Invitation Hero">
       {/* Decorative Illustrations Framing Content (Desktop) */}
       <div className="hero-decor-container" aria-hidden="true">
-        {/* Left: Banana leaves, hanging jasmine garlands, and brass Nilavilakku */}
-        <div className="decor-left">
+        {/* Left: Banana leaves, hanging jasmine garlands, and brass Nilavilakku with gentle sway */}
+        <div className="decor-left scroll-reveal reveal-slide-right delay-1 parallax-decor" data-parallax-speed="0.02">
           <img
             src="/assets/hero_left_feathered.png"
             alt="Traditional Kerala Nilavilakku and Banana Leaves"
-            className="decor-img decor-img-left"
+            className="decor-img decor-img-left decor-flame-glow"
           />
         </div>
 
-        {/* Right Top: Hanging brass lamps (Thookkuvilakku) */}
-        <div className="decor-right-top">
+        {/* Right Top: Hanging brass lamps (Thookkuvilakku) with subtle sway */}
+        <div className="decor-right-top scroll-reveal reveal-slide-down delay-2">
           <img
             src="/assets/hero_lamps_feathered.png"
             alt="Traditional Hanging Brass Lamps"
-            className="decor-img decor-img-lamps"
+            className="decor-img decor-img-lamps decor-lamp-sway"
           />
         </div>
 
         {/* Right Middle: Subtle Kolam geometric art */}
-        <div className="decor-right-kolam">
+        <div className="decor-right-kolam scroll-reveal reveal-fade delay-3">
           <KolamPattern size={85} color="#b38753" opacity={0.65} />
         </div>
 
         {/* Right Bottom: Kasavu Bride and Groom wedding ceremony illustration (Desktop) */}
-        <div className="decor-right-couple desktop-only">
+        <div className="decor-right-couple desktop-only scroll-reveal reveal-scale delay-3">
           <img
             src="/assets/hero_couple_feathered.png"
             alt="Kerala Wedding Ceremony Bride and Groom"
@@ -54,7 +54,7 @@ export const HeroSection = () => {
       {/* Main Invitation Typography & Details */}
       <div className="hero-content">
         {/* Auspicious Emblem & Heading */}
-        <div className="auspicious-block">
+        <div className="auspicious-block scroll-reveal reveal-fade">
           <img
             src="/assets/sreerastu_transparent.png"
             alt="Auspicious Deity Motif"
@@ -69,35 +69,37 @@ export const HeroSection = () => {
         </div>
 
         {/* Invitation Greeting */}
-        <div className="invitation-intro">
+        <div className="invitation-intro scroll-reveal delay-1">
           <p className="intro-line">TOGETHER WITH THEIR FAMILIES</p>
           <p className="intro-line">WE WARMLY INVITE YOU TO THE WEDDING OF</p>
         </div>
 
         {/* Couple Names */}
-        <div className="couple-names-wrap">
+        <div className="couple-names-wrap scroll-reveal delay-2">
           <h1 className="couple-name groom-name">{couple.groom}</h1>
           <span className="ampersand">&amp;</span>
           <h1 className="couple-name bride-name">{couple.bride}</h1>
         </div>
 
         {/* Lotus Divider */}
-        <LotusDivider color="#946234" width={170} />
+        <div className="scroll-reveal delay-3">
+          <LotusDivider color="#946234" width={170} />
+        </div>
 
         {/* Date & Time */}
-        <div className="hero-event-schedule">
+        <div className="hero-event-schedule scroll-reveal delay-3">
           <p className="hero-date">{event.dayOfWeek}, {event.dateFormatted}</p>
           <p className="hero-time">{event.timeFormatted}</p>
         </div>
 
         {/* Venue Location */}
-        <div className="hero-venue-info">
+        <div className="hero-venue-info scroll-reveal delay-4">
           <p className="hero-venue-name">{venue.name}</p>
           <p className="hero-venue-sub">{venue.location}</p>
         </div>
 
         {/* Mobile-dedicated Couple Ceremony Illustration (unobstructed on small screens) */}
-        <div className="hero-couple-mobile mobile-only" aria-hidden="true">
+        <div className="hero-couple-mobile mobile-only scroll-reveal reveal-scale delay-3" aria-hidden="true">
           <img
             src="/assets/hero_couple_feathered.png"
             alt="Kerala Wedding Ceremony Bride and Groom"
@@ -108,7 +110,7 @@ export const HeroSection = () => {
         {/* Scroll Indicator */}
         <button
           onClick={scrollToStory}
-          className="scroll-indicator-btn"
+          className="scroll-indicator-btn scroll-reveal delay-5"
           aria-label="Scroll down to countdown"
         >
           <span className="scroll-circle">

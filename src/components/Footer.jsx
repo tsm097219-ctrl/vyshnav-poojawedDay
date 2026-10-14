@@ -5,9 +5,9 @@ export const Footer = () => {
   const { couple } = weddingConfig;
 
   return (
-    <footer className="site-footer" aria-label="Invitation Footer">
+    <footer className="site-footer scroll-reveal" aria-label="Invitation Footer">
       {/* Traditional Kerala Kasavu Gold Border Strip */}
-      <div className="footer-gold-border" aria-hidden="true">
+      <div className="footer-gold-border scroll-reveal delay-1" aria-hidden="true">
         <img
           src="/assets/footer_border.png"
           alt="Traditional Kasavu Border Pattern"
@@ -16,10 +16,10 @@ export const Footer = () => {
       </div>
 
       <div className="footer-content">
-        <p className="footer-blessing-text">{couple.signatureText}</p>
+        <p className="footer-blessing-text scroll-reveal delay-2">{couple.signatureText}</p>
 
-        {/* Calligraphy Signature of the Couple */}
-        <div className="footer-signature-wrap">
+        {/* Calligraphy Signature of the Couple with Smooth Stroke Reveal */}
+        <div className="footer-signature-wrap scroll-reveal delay-3">
           <img
             src="/assets/signature_clean.png"
             alt={`${couple.namesFormatted} Signature`}
@@ -27,12 +27,12 @@ export const Footer = () => {
           />
         </div>
 
-        {/* Delicate Heart Motif */}
-        <div className="footer-heart-symbol" aria-hidden="true">
+        {/* Delicate Heart Motif with Gentle Pulse */}
+        <div className="footer-heart-symbol scroll-reveal delay-4" aria-hidden="true">
           <img
             src="/assets/footer_heart_clean.png"
             alt="Heart"
-            className="footer-heart-img"
+            className="footer-heart-img heartbeat-pulse"
             width="22"
             height="16"
           />
